@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ctopcodes_gpu", "ctopcodes_gpu\ctopcodes_gpu.vcproj", "{21317440-267E-45FB-866A-9BE3C67B3975}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FCB7B61C-D5C8-41A7-97ED-FCE162AB2F81} = {FCB7B61C-D5C8-41A7-97ED-FCE162AB2F81}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCB7B61C-D5C8-41A7-97ED-FCE162AB2F81}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FCB7B61C-D5C8-41A7-97ED-FCE162AB2F81}.Debug|Win32.Build.0 = Debug|Win32
+		{FCB7B61C-D5C8-41A7-97ED-FCE162AB2F81}.Release|Win32.ActiveCfg = Release|Win32
+		{FCB7B61C-D5C8-41A7-97ED-FCE162AB2F81}.Release|Win32.Build.0 = Release|Win32
+		{21217440-267E-45FB-866A-9BE3C67B3975}.Debug|Win32.ActiveCfg = Debug|Win32
+		{21217440-267E-45FB-866A-9BE3C67B3975}.Debug|Win32.Build.0 = Debug|Win32
+		{21217440-267E-45FB-866A-9BE3C67B3975}.Release|Win32.ActiveCfg = Release|Win32
+		{21217440-267E-45FB-866A-9BE3C67B3975}.Release|Win32.Build.0 = Release|Win32
+		{21317440-267E-45FB-866A-9BE3C67B3975}.Debug|Win32.ActiveCfg = Debug|Win32
+		{21317440-267E-45FB-866A-9BE3C67B3975}.Debug|Win32.Build.0 = Debug|Win32
+		{21317440-267E-45FB-866A-9BE3C67B3975}.Release|Win32.ActiveCfg = Release|Win32
+		{21317440-267E-45FB-866A-9BE3C67B3975}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
