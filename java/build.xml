@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="topcodes" default="build">
+
+
+<!-- *********************************************************** -->
+<!--                         INIT                                -->
+<!-- *********************************************************** -->
+   <target name="init">
+      <tstamp>
+         <format property="build.date" pattern="MM-dd-yyyy"/>
+      </tstamp>
+      <property name="build.compiler" value="modern" />
+      <property name="project.name" value="topcodes" />
+   </target>
+
+
+   
+<!-- *********************************************************** -->
+<!--                         CLEAN                               -->
+<!-- *********************************************************** -->
+   <target name="clean" depends="init">
+      <delete dir="classes"/>
+      <delete file="lib/${project.name}.jar"/>
+   </target>
+
+   
+
+<!-- *********************************************************** -->
+<!--                       COMPILE                               -->
+<!-- *********************************************************** -->
+   <target name="compile" depends="init">
+      <mkdir dir="classes"/>
+      <chmod dir="classes" perm="755" />
+      <javac srcdir="src"
+             destdir="classes"
+             deprecation="true"
+             debug="false"/>
+   </target>
+
+   
+
+<!-- *********************************************************** -->
+<!--                       PACKAGE                               -->
+<!-- *********************************************************** -->
+   <target name="package" depends="compile">
+      <mkdir dir="lib"/>
+      <chmod dir="lib" perm="755" />
+      <jar jarfile="lib/${project.name}.jar"
+           basedir="classes"
+           update="false"/>
+   </target>
+   
+   
+<!-- *********************************************************** -->
+<!--                         BUILD                               -->
+<!-- *********************************************************** -->
+   <target name="build" depends="package"/>
+
+
+<!-- *********************************************************** -->
+<!--                         DOC                                 -->
+<!-- *********************************************************** -->
+   <target name="doc" depends="package">
+      <mkdir dir="docs"/>
+      <javadoc packagenames="webcam,topcodes"
+               sourcepath="src"
+               destdir="docs"
+               author="true"
+               version="true"
+               Public="true"
+               Protected="false" />
+   </target>      
+              
+   
+   
+<!-- *********************************************************** -->
+<!--                       ARCHIVE                               -->
+<!-- *********************************************************** -->
+   <target name="archive" depends="clean, build">
+      <delete file="topcodes.zip"/>
+      <zip destfile="topcodes.zip"
+           basedir=".."
+           includes="topcodes/**"    
+           excludes="topcodes/classes/, **/CVS" />
+   </target>
+
+</project>
