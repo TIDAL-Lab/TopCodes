@@ -90,7 +90,6 @@ void scan(Timer timer) {
   
   
   // 3. scan the bitmap for topcodes
-  /*
   List<TopCode> codes = scanner.scan(img);
 
 
@@ -98,6 +97,5 @@ void scan(Timer timer) {
   for (TopCode top in codes) {
     top.draw(ctx, 1.3);
   }
-  */
 }
 
