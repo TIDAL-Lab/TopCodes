@@ -49,7 +49,6 @@ class Scanner {
     // test all candidate spots
     List<TopCode> codes = new List<TopCode>();
 
-    int k = w * 2;
     for (Candidate c in candidates) {
       if (!overlaps(codes, c.x, c.y)) {
         TopCode top = new TopCode();
@@ -157,7 +156,6 @@ class Scanner {
               b2++;
             }
             else {  // This could be a top code
-              int mask;
               if (b1 >= 2 && b2 >= 2 && w1 >= 3 &&
                   (b1 + b2 - w1) <= (b1 + b2) &&
                   (b1 + b2 - w1) <= w1 &&
