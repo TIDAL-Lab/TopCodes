@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project( topcodes )
+find_package( OpenCV )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( topcodes WebCam.cpp TopCode.cpp TopCodeScanner.cpp easywsclient.cpp )
+target_link_libraries( topcodes ${OpenCV_LIBS} )

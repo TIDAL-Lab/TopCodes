@@ -1,0 +1,27 @@
+Requirements:
+  * cmake 2.8
+  * opencv 3.1.0
+
+Building:
+
+  > cmake CMakeLists.txt
+  > make
+
+
+Running:
+
+  Executable name: topcodes
+  First argument: Webcam number. Usually the default webcam is 0, with additional cameras 1, 2, 3, ...
+  Second argument: URL for a websocket server to stream topcode information
+
+  > ./topcodes 0 ws://echo.websocket.org
+
+  > ./topcodes 1 ws://localhost:8126/topcodes
+
+
+JSON Output:
+  topcodes will stream JSON objects with TopCode information. For each video frame, topcodes will send a JSON array:
+
+  [
+   { "code" : 397, "x" : 177.500000, "y" : 701.500000, "unit" : 2.000000, "angle" : -5.171545 },
+  ]
