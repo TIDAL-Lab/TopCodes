@@ -1,10 +1,10 @@
 TopCodes
 ========
 
-Tangible Object Placement Codes: A simple computer vision fiducial library for tangible interaction.
+Tangible Object Placement Codes: A simple computer vision library for tangible interaction.
 
-    
 Overview
+--------
 
 The TopCode computer vision library is designed to quickly and easily identify and track tangible objects on a flat surface. Just tag any physical object with a TopCode (a circular black and white symbol) and the system will return:
 
@@ -15,23 +15,45 @@ The TopCode computer vision library is designed to quickly and easily identify a
 
 The TopCode library will identify 99 unique codes and can accurately recognize codes as small as 25 x 25 pixels. 
 The image processing algorithms work in a variety of lighting conditions without the need for human calibration. 
-The core TopCode library is available in Java, Android, Dart, and C++ (thanks to Raveh Gonen). 
+The core TopCode library is available in JavaScript, Java, Android, Dart, and C++ (thanks to Raveh Gonen). 
 
-Pros
+###Pros
 
 * Free and open source
 * Fast and accurate
 * Will work in a variety of lighting conditions
 * Can recognize up to 99 unique codes in a single image. 
 
-Cons
+###Cons
 
 * The camera must be orthogonal to the interaction surface.
 * Requires programming knowledge to use
 
 
-Quick Start Guide (Java)
+Quick Start Guide for JavaScript
+--------------------------------
 
+To load up TopCodes in your browser, start by creating a simple HTML file:
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TopCodes Example</title>
+</head>
+
+<body>
+  <canvas id="video-canvas" width="800" height="600" style="background: #ddd;"></canvas>
+  <br/>
+  <button id="camera-button" onclick="TopCodes.startStopVideoScan('video-canvas')">Start / Stop</button>
+
+  <script src="topcodes.js"></script>
+</body>
+</html>
+```
+
+Quick Start Guide for Java
+--------------------------
 To get started with the Java TopCode library:
 
 * Download and install the Java JDK
