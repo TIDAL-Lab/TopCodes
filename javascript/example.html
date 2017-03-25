@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TopCodes Example</title>
+</head>
+
+<body>
+  <canvas id="video-canvas" width="800" height="600" style="background: #ddd;"></canvas>
+  <br/>
+  <button id="camera-button" onclick="TopCodes.startStopVideoScan('video-canvas')">Start / Stop</button>
+
+  <script src="topcodes.js"></script>
+
+  <script>
+
+  TopCodes.setVideoFrameCallback("video-canvas", function(jsonString) {
+    var json = JSON.parse(jsonString);
+    drawCodes(json.topcodes);
+  });
+
+
+  function drawCodes(topcodes) {
+    var ctx = document.querySelector("#video-canvas").getContext('2d');
+    ctx.fillStyle = "rgba(255, 0, 0, 0.3)";
+    for (i=0; i<topcodes.length; i++) {
+      ctx.beginPath();
+      ctx.arc(topcodes[i].x, topcodes[i].y, topcodes[i].radius, 0, Math.PI*2, true);
+      ctx.fill();
+    }
+  }
+
+  </script>
+</body>
+</html>
