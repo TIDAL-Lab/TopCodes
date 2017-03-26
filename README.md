@@ -1,10 +1,4 @@
-TopCodes
-========
-
-Tangible Object Placement Codes: A simple computer vision library for tangible interaction.
-
-Overview
---------
+# TopCodes
 
 The TopCode computer vision library is designed to quickly and easily identify and track tangible objects on a flat surface. Just tag any physical object with a TopCode (a circular black and white symbol) and the system will return:
 
@@ -17,25 +11,28 @@ The TopCode library will identify 99 unique codes and can accurately recognize c
 The image processing algorithms work in a variety of lighting conditions without the need for human calibration. 
 The core TopCode library is available in JavaScript, Java, Android, Dart, and C++ (thanks to Raveh Gonen). 
 
-###Pros
+### Pros
 
 * Free and open source
 * Fast and accurate
 * Will work in a variety of lighting conditions
 * Can recognize up to 99 unique codes in a single image. 
 
-###Cons
+### Cons
 
 * The camera must be orthogonal to the interaction surface.
 * Requires programming knowledge to use
 
-
-Quick Start Guide for JavaScript
 --------------------------------
 
-To load up TopCodes in your browser, start by creating a simple HTML file:
 
-```
+## Quick Start Guide for JavaScript
+
+* To load up TopCodes in your browser, start by downloading the [topcodes.js](https://raw.githubusercontent.com/TIDAL-Lab/TopCodes/master/javascript/topcodes.js) library.
+
+* Then create a simple HTML file in the same directory as the library file (you can copy this code):
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,8 +49,56 @@ To load up TopCodes in your browser, start by creating a simple HTML file:
 </html>
 ```
 
-Quick Start Guide for Java
---------------------------
+* Load this file into a browser (Chrome or Firefox) and try pressing the Start / Stop button. If everything works a video stream should open from your built-in web camera. 
+
+* Next try printing out some [TopCodes](https://github.com/TIDAL-Lab/TopCodes/blob/master/topcodes.pdf) and holding them in front of the camera. You should see TopCode symbols being drawn over the sheet of paper in the video stream. 
+
+* Now we can actually do something with the TopCodes from the video stream. First we have to define a callback function that will receive JSON data frame by frame from the video stream.  Add this `<script>` tag at the end of your HTML file right before the close `</body>` tag.
+
+```html
+  <script>
+
+  // register a callback function with the TopCode library
+  TopCodes.setVideoFrameCallback("video-canvas", function(jsonString) {
+
+    // convert the JSON string to an object
+    var json = JSON.parse(jsonString);
+
+    // get the list of topcodes from the JSON object
+    var topcodes = json.topcodes;
+
+    // obtain a drawing context from the <canvas> 
+    var ctx = document.querySelector("#video-canvas").getContext('2d');
+
+    // draw a circle over the top of each TopCode
+    ctx.fillStyle = "rgba(255, 0, 0, 0.3)";   // very translucent red
+    for (i=0; i<topcodes.length; i++) {
+      ctx.beginPath();
+      ctx.arc(topcodes[i].x, topcodes[i].y, topcodes[i].radius, 0, Math.PI*2, true);
+      ctx.fill();
+    }
+  });
+  </script>
+```
+
+* If this works, you'll see pinkish circle drawn over each of the TopCode symbols found in the video stream. 
+
+* Each TopCode is a JSON object with the following structure:
+
+```json
+{
+    code : 31,
+    x : 35.0,
+    y : 87.0,
+    radius : 52,
+    angle : 0.135032
+}
+```
+
+--------------------------------
+
+## Quick Start Guide for Java
+
 To get started with the Java TopCode library:
 
 * Download and install the Java JDK
@@ -76,23 +121,25 @@ To get started with the Java TopCode library:
 
 All of the TopCode ID numbers will be printed on the command line each time an image is loaded.
 
-Other computer vision libraries you might try:
+------------------------------
+
+## Other computer vision libraries you might try:
 
 * ARToolKit from the HITLab at the University of Washington
 * reacTIVision from the Music Technology Group at Pompeu Fabra University in Barcelona
 * CanTag and TinyTag from the University of Cambridge in the U.K.
 * Vuforia from Qualcomm
 
-References
+## References
 
 The TopCode library was developed by Michael Horn at Tufts University and Northwestern University. The library is based on TRIP from the University of Cambridge in the U.K. and on adaptive thresholding techniques developed by Pierre Wellner.
 
-Comments & Feedback
+## Comments & Feedback
 
 Please send comments, suggestions, and bug fixes to Michael Horn (michael-horn <at> northwestern dot edu). 
 
 
-Valid TopCodes
+## Valid TopCodes
 
 This is a list of valid TopCode ID numbers:
 
