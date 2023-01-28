@@ -33,7 +33,7 @@ class TopCode {
   static final int WIDTH = 8;
   
   /** Span of a data sector in radians */
-  static final double ARC = (2.0 * PI / 13.0);
+  static final double ARC = (2.0 * pi / 13.0);
   
   /** Symbol's id code or -1 if invalid */
   int code = -1;
@@ -227,7 +227,7 @@ class TopCode {
     // background circle
     ctx.fillStyle = "white";
     ctx.beginPath();
-    ctx.arc(x, y, r, 0, PI * 2, true);
+    ctx.arc(x, y, r, 0, pi * 2, true);
     ctx.fill();
 
     for (int i=0; i<SECTORS; i++) {
@@ -243,17 +243,17 @@ class TopCode {
     
     ctx.fillStyle = "white";
     ctx.beginPath();
-    ctx.arc(x, y, r - u, 0, PI * 2, true);
+    ctx.arc(x, y, r - u, 0, pi * 2, true);
     ctx.fill();
     
     ctx.fillStyle = "black";
     ctx.beginPath();
-    ctx.arc(x, y, r - u * 2, 0, PI * 2, true);
+    ctx.arc(x, y, r - u * 2, 0, pi * 2, true);
     ctx.fill();
     
     ctx.fillStyle = "white";
     ctx.beginPath();
-    ctx.arc(x, y, r - u * 3, 0, PI * 2, true);
+    ctx.arc(x, y, r - u * 3, 0, pi * 2, true);
     ctx.fill();
     
     /*

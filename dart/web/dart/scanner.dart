@@ -29,8 +29,8 @@ part of topcodes;
  */
 class Scanner {
 
-  ImageData _image;
-  int w, h;
+  late ImageData _image;
+  late int w, h;
 
   
   Scanner() { }
@@ -47,7 +47,7 @@ class Scanner {
     List<Candidate> candidates = threshold();
 
     // test all candidate spots
-    List<TopCode> codes = new List<TopCode>();
+    List<TopCode> codes = [];
 
     for (Candidate c in candidates) {
       if (!overlaps(codes, c.x, c.y)) {
@@ -88,7 +88,7 @@ class Scanner {
  * EuroPARC Technical Report EPC-93-110
  */
   List<Candidate> threshold() {
-    List<Candidate> candidates = new List<Candidate>();
+    List<Candidate> candidates = [];
     
     int r, g, b, a;
     int threshold, sum = 128;

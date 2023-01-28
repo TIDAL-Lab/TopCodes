@@ -22,4 +22,14 @@ local.properties
 # dart files
 .packages
 pubspec.lock
+.pub/
 build/
+.dart_tool/
+build/web/
+
+# Directory created by dartdoc
+# If you don't generate documentation locally you can remove this line.
+doc/api/
+.DS_Store
+
+

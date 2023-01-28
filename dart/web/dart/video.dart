@@ -28,29 +28,29 @@ part of topcodes;
 class VideoScanner {
 
   /* original canvas ID */
-  String canvasId;
+  late String canvasId;
 
   /* <canvas> tag drawing context */
-  CanvasRenderingContext2D _ctx;
+  late CanvasRenderingContext2D _ctx;
 
   /* this is where we get the video frames from */
-  VideoElement _video = null;
+  late VideoElement _video;
 
   /* used to scan video frame on a periodic timer */
-  Timer _timer = null;
+  Timer? _timer;
 
   /* used to identify topcodes in video frames */
-  Scanner _scanner;
+  late Scanner _scanner;
 
 
   VideoScanner(this.canvasId) {
     _scanner = new Scanner();
-    CanvasElement canvas = querySelector("#$canvasId");
-    _ctx = canvas.getContext("2d");
+    CanvasElement? canvas = querySelector("#$canvasId") as CanvasElement?;
+    _ctx = canvas?.getContext("2d") as CanvasRenderingContext2D;
     _video = new VideoElement() .. id = "$canvasId-video"; //querySelector("#$videoId");
     _video.autoplay = true;
     _video.style.display = "none";
-    document.body.append(_video);
+    document.body?.append(_video);
 
     _video.onPlay.listen((e) {
       print("video width: ${_video.videoWidth}");
@@ -60,7 +60,7 @@ class VideoScanner {
 
     _video.onPause.listen((e) {
       print("pause");
-      if (_timer != null) _timer.cancel();
+      if (_timer != null) _timer?.cancel();
       _timer = null;
     });
   }
@@ -101,14 +101,14 @@ class VideoScanner {
     List<TopCode> codes = _scanner.scan(id, _ctx);
 
     // draw topcodes
-    var json = { "canvasId" : canvasId, "topcodes" : [] };
+    Map json = { "canvasId" : canvasId, "topcodes" : [] };
     for (TopCode top in codes) {
       top.draw(_ctx);
-      json["topcodes"].add(top.toJSON());
+      json["topcodes"]?.add(top.toJSON());
     }
 
     // export JSON to javascript callback
-    js.context["TopCodes"].callMethod("_relayFrameData", [ canvasId, JSON.encode(json) ]);
+    js.context["TopCodes"].callMethod("_relayFrameData", [ canvasId, jsonEncode(json) ]);
   }
 }
 
